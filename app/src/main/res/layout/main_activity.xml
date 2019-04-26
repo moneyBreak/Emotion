@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout android:id="@+id/mainLayout"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.activity.MainActivity"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="6dp">
+
+        <com.example.gesang.emotion.view.selfview.HeaderBar
+            android:id="@+id/headerBar"
+            android:layout_height="64dp"
+            android:layout_width="match_parent"
+            app:Tabs="true"
+            app:leftIcon="0"
+            app:rightOne="0"
+            app:rightTwo="0" />
+
+        <fragment
+            android:id="@+id/my_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph_main" />
+
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+            <!--android:id="@+id/recordRecyclerView"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="6dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:scrollbars="none" />-->
+    </LinearLayout>
+
+    <include layout="@layout/drawer_layout" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
+

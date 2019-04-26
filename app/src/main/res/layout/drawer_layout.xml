@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/drawerLeft"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity = "start"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:background="@color/back_white"
+>
+
+    <View
+        android:layout_marginTop="156dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/left_line"/>
+
+
+    <ImageView
+        android:id="@+id/leftHeader"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginStart="36dp"
+        />
+
+    <ListView
+        android:id="@+id/personList"
+        android:layout_below="@+id/leftHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:divider="@color/back_white"
+        android:choiceMode="singleChoice"
+        />
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/left_line"
+        android:layout_below="@id/personList"/>
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:text="标签"
+        android:layout_marginStart="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_below="@id/lineView"
+        style="@style/drawerMenuTextTwo"
+        />
+    <TextView
+        android:id="@+id/editLabel"
+        android:text="编辑标签"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="12dp"
+        android:layout_height="26dp"
+        android:layout_below="@id/lineView"
+        style="@style/drawerMenuTextTwo"
+        />
+
+    <ImageView
+        android:id="@+id/img_editLabel"
+        android:layout_toStartOf="@id/editLabel"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon_edit"
+        android:layout_below="@id/lineView"/>
+
+    <ListView
+        android:id="@+id/labelList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_label"
+        android:layout_marginTop="6dp"
+        android:divider="@color/back_white"
+        />
+
+</RelativeLayout>

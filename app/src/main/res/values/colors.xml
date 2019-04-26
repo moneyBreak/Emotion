@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="back_white">#fdfdfe</color>
+    <color name="tab_text_selected">#FFFFFF</color>
+    <color name="tab_text_unSelected">#959494</color>
+    <color name="tab_border">#DBDBDB</color>
+    <color name="drawer_text_color">#101010</color>
+    <color name="left_line">#BBBBBB</color>
+    <color name="left_item_background">#D5D3D3</color>
+    <color name="boring_white">#ffffff</color>
+</resources>

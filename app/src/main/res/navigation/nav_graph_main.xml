@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/waterfallPage">
+
+    <fragment
+        android:id="@+id/waterfallPage"
+        android:name="com.example.gesang.emotion.view.fragment.WaterfallFragment"
+        android:label="fragment_page1"
+        tools:layout="@layout/waterfall_fragment_layout">
+
+        <action
+            android:id="@+id/action_page2"
+            app:destination="@id/editInfoPage" >
+            <argument
+                android:name="note"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="@null"/>
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/editInfoPage"
+        android:name="com.example.gesang.emotion.view.fragment.EditNoteFragment"
+        android:label="fragment_page2"
+        tools:layout="@layout/edit_activity_layout">
+    </fragment>
+
+    <!--<fragment-->
+        <!--android:id="@+id/page2Fragment"-->
+        <!--android:name="com.example.gesang.emotion.view.fragment.MainPage2Fragment"-->
+        <!--android:label="fragment_page2"-->
+        <!--tools:layout="@layout/test_fragment_layout">-->
+        <!--<action-->
+            <!--android:id="@+id/action_page1"-->
+            <!--app:popUpTo="@id/page1Fragment" />-->
+        <!--<action-->
+            <!--android:id="@+id/action_page3"-->
+            <!--app:destination="@id/nav_graph_page3" />-->
+    <!--</fragment>-->
+
+    <!--<navigation-->
+        <!--android:id="@+id/nav_graph_page3"-->
+        <!--app:startDestination="@id/page3Fragment">-->
+        <!--<fragment-->
+            <!--android:id="@+id/page3Fragment"-->
+            <!--android:name="com.example.gesang.emotion.view.fragment.MainPage3Fragment"-->
+            <!--android:label="fragment_page3"-->
+            <!--tools:layout="@layout/test_fragment_layout" />-->
+    <!--</navigation>-->
+
+</navigation>

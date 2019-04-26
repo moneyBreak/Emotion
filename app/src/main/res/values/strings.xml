@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Emotion</string>
+
+    <string-array name="testList">
+        <item>我这就是一段测试得内容，现在只能实现单个图片得加载，如果可以我希望携程多个图片的加载，这样可以吧</item>
+    <item>我要很多段长短不一的数据来做测试</item>
+    <item >模拟数据还是很累的，但是我又不能不干，因为要毕业设计。</item>
+    <item>是不是我可以吟诗</item>
+    <item>我开始觉得不应该堆自己的毕业设计要求那么高，因为自己做的东西和一个大公司做出来的产品是不同的</item>
+    <item>但是又不能满足现状，想写点神奇的东西出来锻炼自己</item>
+    </string-array>
+
+
+</resources>

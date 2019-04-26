@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_activated="true" android:drawable="@color/left_item_background" />
+    <item  android:drawable="@color/boring_white" />
+</selector>
+

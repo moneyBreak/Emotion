@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mRegisterUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="144dp"
+        app:counterMaxLength="6"
+        app:counterEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:hintTextAppearance="@style/TextInputStyle"
+        app:counterOverflowTextAppearance="@style/TextInputOverCounter"
+        android:singleLine="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="账号:"
+            android:paddingLeft="12dp"
+            android:background="@null"
+            android:maxLength="6"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mRegisterUserPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:counterMaxLength="12"
+        app:counterEnabled="true"
+        app:hintTextAppearance="@style/TextInputStyle"
+        app:counterOverflowTextAppearance="@style/TextInputOverCounter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mRegisterUserName"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:paddingLeft="12dp"
+            android:hint="密码:"
+            android:maxLength="12"
+            android:singleLine="true"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/mRegisterButton"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mRegisterUserPass"
+        android:text="注册并登录"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

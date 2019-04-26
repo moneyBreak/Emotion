@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    android:id="@+id/itemFrame"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:background="@drawable/left_list_item_corner"
+    >
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="36dp"
+    android:background="@drawable/left_item_selector"
+    >
+    
+    <ImageView
+        android:id="@+id/menuIcon"
+        android:layout_gravity="center_vertical"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        />
+    
+    <TextView
+        android:id="@+id/menuTitle"
+        android:layout_marginLeft="18dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="我就是个title"
+        style="@style/drawerMenuTextStyle" />
+</LinearLayout>
+
+</FrameLayout>

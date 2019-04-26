@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--HeaderBar 的自定义属性-->
+    <declare-styleable name="HeaderBar">
+        <attr name="leftIcon" format="integer"/>
+        <attr name="Tabs" format="boolean" />
+        <attr name="rightOne" format="integer" />
+        <attr name="rightTwo" format="integer" />
+    </declare-styleable>
+</resources>

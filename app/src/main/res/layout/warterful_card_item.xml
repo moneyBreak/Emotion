@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemCard"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true"
+    android:transitionName="cardItem">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:transitionName="cardImage"/>
+
+        <TextView
+            android:id="@+id/itemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/itemImage"
+            android:layout_marginRight="62dp"
+            style="@style/CardItemTextStyle"
+            android:textSize="16sp"
+            android:text="这是测试标题"
+            android:singleLine="true"
+            android:transitionName="cardTitle"/>
+
+        <TextView
+            android:id="@+id/itemBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/itemImage"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            style="@style/CardItemTextStyle"
+            android:text="2016.1.1" />
+
+        <TextView
+            android:id="@+id/itemContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemTitle"
+            style="@style/CardItemTextStyle"
+            android:textSize="12sp"
+            android:text="nonono"
+            android:transitionName="cardContent"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
+    
+    
