@@ -1,6 +1,7 @@
 package com.example.gesang.emotion.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.core.util.Pair
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigator.Extras
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -26,6 +28,7 @@ import com.example.gesang.emotion.view.adapter.OnCardClickListener
 import com.example.gesang.emotion.view.adapter.WaterfallAdapter
 import com.example.gesang.emotion.view.selfview.WaterfullDecoration
 import com.github.salomonbrys.kotson.jsonObject
+import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.tencent.mmkv.MMKV
 import kotlinx.android.synthetic.main.waterfall_fragment_layout.*
@@ -43,6 +46,7 @@ class WaterfallFragment : Fragment(){
     private val layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.e("WaterfallFragment","onCreateView")
         return inflater.inflate(R.layout.waterfall_fragment_layout,container,false)
     }
 
@@ -52,7 +56,6 @@ class WaterfallFragment : Fragment(){
         mFragment = view
         initRecycleList()
         makeDataList()
-
     }
 
     private fun initRecycleList() {
@@ -83,9 +86,14 @@ class WaterfallFragment : Fragment(){
 
             val extras = FragmentNavigator.Extras.Builder()
                     .addSharedElements(shareElements).build()
+            //因为从json中拿出来是乱序的，所以暂时不考虑这一步再数据库操作
 
-            val obj = kv.decodeStringSet("notes").elementAt(position)
+//            val obj = kv.decodeStringSet("notes").elementAt(position)
+//
+//            val objs = kv.decodeStringSet("notes")
+//            Log.e("jsonObjs:",objs.toString())
 
+            val obj = toJsonString(dataList[position])
             val bundle = Bundle()
             bundle.putString("note",obj)
 
@@ -112,7 +120,7 @@ class WaterfallFragment : Fragment(){
 
     fun makeDataList(){
 
-        var set = mutableSetOf<String>()
+        var set = linkedSetOf<String>()
 
         for(data in dataList){
             val obj :JsonObject = jsonObject(
@@ -124,10 +132,28 @@ class WaterfallFragment : Fragment(){
                     "imageUrl" to data.record,
                     "content" to data.content
             )
-
             set.add(obj.toString())
         }
+
+        Log.e("set!!!:",set.toString())
+
         kv.encode("notes",set)
+    }
+
+    fun toJsonString(note :Note):String{
+
+        val obj :JsonObject = jsonObject(
+                "title" to note.title,
+                "birth" to note.birth,
+                "date" to note.date,
+                "lastDate" to note.lastDate,
+                "imageUrl" to note.imageUrl,
+                "imageUrl" to note.record,
+                "content" to note.content
+        )
+
+        return obj.toString()
+
     }
 
 

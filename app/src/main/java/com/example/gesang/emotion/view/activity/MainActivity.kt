@@ -65,6 +65,8 @@ class MainActivity: AppCompatActivity() {
         headerBar.initClick(InitHeaderClass())
     }
 
+    override fun onSupportNavigateUp() = findNavController(this,R.id.my_nav_host_fragment).navigateUp()
+
     inner class InitHeaderClass : IHeaderBar{
         override fun onClick(v: View?) {
             Log.e("click:","点击事件到这里了！！！")

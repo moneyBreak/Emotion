@@ -37,9 +37,12 @@ class EditNoteFragment : BaseFragment() {
         //这里直接读取数据库数据吧
 
         val jsonString = arguments!!.getString("note")
-        val note : Note = Gson().fromJson(jsonString)
+        val note : Note = Gson().fromJson(jsonString!!)
 
-        Log.e("noteData",jsonString)
+        Log.e("noteData",jsonString)//这里是错的
+
+        editTitle.text = Editable.Factory().newEditable(note.title)
+        editTextContent.text = Editable.Factory().newEditable(note.content)
 
     }
 }
