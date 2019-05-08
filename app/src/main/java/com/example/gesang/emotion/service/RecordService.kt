@@ -8,6 +8,7 @@ import android.os.Environment
 import android.os.IBinder
 import android.util.Log
 import com.example.gesang.emotion.R
+import com.example.gesang.emotion.model.data.RecorderItem
 import com.tencent.mmkv.MMKV
 import java.io.File
 import java.io.IOException
@@ -23,9 +24,10 @@ class RecordService : Service() {
 
     var mStartTimeMillis :Long = 0
     var mWholeTimeMillis : Long=0
-//    var  mIncreatTimeTask : TimerTask? = null
 
     val mNoteId = null
+
+    private var recorderItem=RecorderItem()
 
     val kv = MMKV.defaultMMKV()
 
@@ -40,8 +42,8 @@ class RecordService : Service() {
     private fun recordingStart() {
         setFileNameAndPath()
 
-        Log.e("RecorderFilePath:",mFilePath)
-        Log.e("RecorderFileName:",mFileName)
+        Log.e("StartRecorderFilePath:",mFilePath)
+        Log.e("StartRecorderFileName:",mFileName)
 
         mRecorder = MediaRecorder()
         mRecorder!!.setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -77,25 +79,32 @@ class RecordService : Service() {
     }
 
     override fun onDestroy() {
-        recorderStop()
+        mRecorder.let { recorderStop() }
         super.onDestroy()
     }
 
     private fun recorderStop() {
         mRecorder!!.stop()
         mWholeTimeMillis = (System.currentTimeMillis()-mStartTimeMillis)
+        mRecorder!!.reset()
         mRecorder!!.release()
 
-        kv.encode("temporaryRecorderFileName",mFileName)
-        Log.e("recordFileName:",mFileName)
-        Log.e("recordFilePath:",mFilePath)
-        kv.encode("temporaryRecorderFilePath",mFilePath)
-//
-//        mIncreatTimeTask.let {
-//            mIncreatTimeTask!!.cancel()
-//            mIncreatTimeTask = null
-//        }
+//        recorderItem.mName = null
+        recorderItem.mFilePath = mFilePath
+        recorderItem.mBirth = mStartTimeMillis
+        recorderItem.mId = 0
+        recorderItem.mLength = mWholeTimeMillis.toInt()
+
+
+//        Log.e("KvrecordFileName:",mFileName)
+//        Log.e("KvrecordFilePath:",mFilePath)
+//        kv.encode("temporaryRecorderFileName",mFileName)
+//        kv.encode("temporaryRecorderFilePath",mFilePath)
+
+        kv.encode("temporaryRecorderItem",recorderItem)
+        Log.e("ServiceEncode:","已经存入了")
         mRecorder = null
+
 
     }
 }

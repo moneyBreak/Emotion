@@ -1,12 +1,15 @@
 package com.example.gesang.emotion.view.selfview;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Chronometer;
@@ -14,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.gesang.emotion.R;
+import com.example.gesang.emotion.model.data.RecorderItem;
 import com.example.gesang.emotion.service.RecordService;
 import com.melnykov.fab.FloatingActionButton;
 
@@ -21,6 +25,8 @@ import java.io.File;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import kotlin.reflect.KClass;
 
@@ -77,21 +83,18 @@ public class RecordAudioDialogFragment extends DialogFragment {
         mFabRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                        != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(getActivity()
-//                            , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
-//                }else {
                     onRecord(mStartRecording);
                     mStartRecording = !mStartRecording;
-//                }
             }
         });
 
         mIvClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onCancel();
+                if(!mStartRecording){
+                    onRecord(mStartRecording);
+                }
+                dismiss();
             }
         });
 
@@ -139,12 +142,19 @@ public class RecordAudioDialogFragment extends DialogFragment {
             Objects.requireNonNull(getActivity()).stopService(intent);
             //allow the screen to turn off again once recording is finished
             getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+            mListener.onRecorderItemReturn();
             dismiss();
         }
     }
 
     public void setOnCancelListener(OnAudioCancelListener listener) {
         this.mListener = listener;
+    }
+
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
     }
 
     @Override
@@ -160,6 +170,12 @@ public class RecordAudioDialogFragment extends DialogFragment {
     }
 
     public interface OnAudioCancelListener {
+        //取消录音
         void onCancel();
+        //回传录音类，方便布局
+        //在改进之前，直接用封装类吧
+        void onRecorderItemReturn();
     }
+
+
 }

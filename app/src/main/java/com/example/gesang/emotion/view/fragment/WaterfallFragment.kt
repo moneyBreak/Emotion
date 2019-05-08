@@ -19,7 +19,7 @@ import com.example.gesang.emotion.base.BaseActivity
 import com.example.gesang.emotion.base.BaseFragment
 import com.example.gesang.emotion.base.BaseMvpActivity
 import com.example.gesang.emotion.base.BaseMvpFragment
-import com.example.gesang.emotion.injection.component.DaggerNoteComponent
+//import com.example.gesang.emotion.injection.component.DaggerNoteComponent
 import com.example.gesang.emotion.model.data.Note
 import com.example.gesang.emotion.presenter.WaterfallPresenter
 import com.example.gesang.emotion.presenter.view.WaterfallView
@@ -45,6 +45,10 @@ class WaterfallFragment : Fragment(){
 
     private val layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 
+    companion  object {
+        val instance :WaterfallFragment by lazy { WaterfallFragment() }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.e("WaterfallFragment","onCreateView")
         return inflater.inflate(R.layout.waterfall_fragment_layout,container,false)
@@ -64,7 +68,11 @@ class WaterfallFragment : Fragment(){
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
         recordRecyclerView.itemAnimator = null
         //设置两列的项目
-        recordRecyclerView.layoutManager = layoutManager
+
+        if(recordRecyclerView.layoutManager == null){
+            recordRecyclerView.layoutManager = layoutManager
+        }
+//        recordRecyclerView.layoutManager = layoutManager
 
         val adapter = WaterfallAdapter(activity as MainActivity, dataList)
         adapter.onCardClickListener = CardClick()

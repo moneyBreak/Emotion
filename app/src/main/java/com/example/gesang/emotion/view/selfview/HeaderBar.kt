@@ -95,8 +95,4 @@ class HeaderBar @JvmOverloads constructor(
                 .load(R.mipmap.header)
                 .circleCrop()
                 .into(leftIcon)
-
-
-
-
 }

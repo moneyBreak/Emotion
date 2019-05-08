@@ -23,6 +23,13 @@
         android:name="com.example.gesang.emotion.view.fragment.EditNoteFragment"
         android:label="fragment_page2"
         tools:layout="@layout/edit_activity_layout">
+
+        <action
+            android:id="@+id/action_page1"
+            app:destination="@id/waterfallPage"
+            app:popUpTo="@+id/waterfallPage"
+            app:popUpToInclusive = "true"
+            />
     </fragment>
 
     <!--<fragment-->
